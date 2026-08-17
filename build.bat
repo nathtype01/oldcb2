@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 rem recompile les sources patchees dans src\ et reassemble un
-rem "offline cheatbreaker 1.8.9-patched.jar" + .json qui va avec pret a drop dans
+rem "oldcb2.jar" + .json qui va avec pret a drop dans
 rem %appdata%\.minecraft\versions\ et lancer avec le launcher minecraft officiel
 rem
 rem lit dans original-oldcb\ a cote de ce script :
@@ -26,7 +26,7 @@ cd /d "%~dp0"
 
 set VERSION_DIR=original-oldcb
 set SOURCE_NAME=Offline CheatBreaker 1.8.9
-set OUTPUT_NAME=Offline CheatBreaker 1.8.9-patched
+set OUTPUT_NAME=oldcb2
 set LIB_ROOT=%APPDATA%\.minecraft\libraries
 set JOPT_JAR=%LIB_ROOT%\net\sf\jopt-simple\jopt-simple\4.6\jopt-simple-4.6.jar
 set GSON_JAR=%LIB_ROOT%\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar
