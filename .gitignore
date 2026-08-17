@@ -1,0 +1,9 @@
+# build.bat output -- run it to regenerate these from src/
+original-oldcb/build/
+original-oldcb/*-patched.jar
+original-oldcb/*-patched.json
+original-oldcb/*-patched-natives/
+
+# decompiler tool binary + a full third-party repo pulled in for reference -- not this project's code
+cfr.jar
+PrismLauncher-develop/
