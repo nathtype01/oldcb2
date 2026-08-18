@@ -1,27 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-rem recompile les sources patchees dans src\ et reassemble un
-rem "oldcb2.jar" + .json qui va avec pret a drop dans
-rem %appdata%\.minecraft\versions\ et lancer avec le launcher minecraft officiel
-rem
-rem lit dans original-oldcb\ a cote de ce script :
-rem   - "offline cheatbreaker 1.8.9.jar"   le jar client original non modifie
-rem   - "offline cheatbreaker 1.8.9.json"  son manifest de version qui va avec
-rem les deux sont dans ce repo donc un checkout tout frais build sans telechargement
-rem en plus a part les 3 libs en dessous
-rem le resultat patche va aussi dans original-oldcb\ juste a cote de l'original
-rem
-rem demande aussi 3 petites libs sur lesquelles ce client a ete build que le
-rem launcher officiel telecharge deja la premiere fois que tu lances n'importe
-rem quel profil qui les utilise (jopt-simple gson et authlib sont communs a la
-rem plupart des versions 1.8.x) par defaut ce script les cherche la ou le
-rem launcher officiel les met sous %appdata%\.minecraft\libraries\ si t'as
-rem jamais lance quoi que ce soit avec le launcher officiel sur cette machine
-rem lance n'importe quelle version 1.8.x une fois d'abord (meme celle-ci meme si
-rem elle est encore cassee a ce moment) pour que ces libs se telechargent
-rem puis relance ce script
-
 cd /d "%~dp0"
 
 set VERSION_DIR=original-oldcb
@@ -82,6 +61,15 @@ set JARRESULT=%errorlevel%
 popd
 if not %JARRESULT%==0 (
     echo [ERREUR] echec de la mise a jour du jar
+    pause
+    exit /b 1
+)
+
+echo ajout du shader polyblur phosphor dans le jar...
+jar uf "%VERSION_DIR%\%OUTPUT_NAME%.jar" assets
+set JARRESULT2=%errorlevel%
+if not %JARRESULT2%==0 (
+    echo [ERREUR] echec de l'ajout des assets polyblur
     pause
     exit /b 1
 )
