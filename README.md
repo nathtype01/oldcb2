@@ -1,7 +1,8 @@
 # oldcb2
 
-**avant tout : désactiver le module "hypixel mods" dans les options sinon ça lag
-de baisé dès que y'a des nametags affichés**
+**le module "hypixel mods" est désactivé en dur dans le code (patché) parce qu'il
+lag de baisé dès que y'a des nametags affichés -- toggle le dans le menu si tu
+veux mais ça changera rien, il fait plus rien peu importe l'état**
 
 ## c'est quoi
 
