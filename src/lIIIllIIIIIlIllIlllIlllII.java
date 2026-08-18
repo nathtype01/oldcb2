@@ -13,6 +13,12 @@
  * qui elle remplace le menu principal vanilla par celui du client
  * l'ancien fix plus bourrin (skip toute la méthode) désactivait ce swap par accident
  * celui là touche que le check
+ *
+ * ajout : CBBootSound.playOnce() sur les deux points où le swap vanilla ->
+ * menu cheatbreaker arrive (les deux seuls endroits où le menu principal du
+ * client apparaît vraiment) joue assets/sounds/boot.mp3 une seule fois grâce
+ * à son propre flag interne peu importe combien de fois cette méthode
+ * repasse par là
  */
 import generated.Strings9;
 import java.util.concurrent.TimeUnit;
@@ -48,9 +54,11 @@ implements IIlllIIIIIlllIllIIIllIlIl {
         if (ilIIllIIlIlIIIIlIlIIlllII.IllllIllIIIlllIIllllllIII() != null) {
             if (ilIIllIIlIlIIIIlIlIIlllII.IllllIllIIIlllIIllllllIII() instanceof llIIIIlIlIIllIlIIIIIlIlll) {
                 ilIIllIIlIlIIIIlIlIIlllII.lllIllIllIlIIIlllIIllllII((IlIllllIIlIIllIlIlllllIlI)new llllIIIlllIIIllIlllIIlIlI());
+                CBBootSound.playOnce();
             }
         } else if (IlIIllIIllIIIllllIIllIIII.lIllllIIllIllllllIllIIIll() == null) {
             ilIIllIIlIlIIIIlIlIIlllII.lllIllIllIlIIIlllIIllllII((IlIllllIIlIIllIlIlllllIlI)new llllIIIlllIIIllIlllIIlIlI());
+            CBBootSound.playOnce();
         }
     }
 

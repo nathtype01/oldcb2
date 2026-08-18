@@ -24,13 +24,22 @@
  *    updateCameraAndRender comme le mixin polyblur d'origine
  *  - intensité pilotée via l'uniform "Weight" du shader lu en direct depuis le
  *    slider "Value" du module (1 à 10, défaut 1)
- *  - bug corrigé : écran totalement noir (menus compris) quand le module est
- *    actif ET que "fast render" d'optifine est activé -- optifine dit lui même
- *    dans son lang file "fast render is not compatible with shaders" et
- *    polyblur avertit pareil pour son mode phosphor, le shader group plante
- *    silencieusement le framebuffer principal dans ce cas donc le module est
- *    juste ignoré tant que fast render est activé (pas de plantage juste pas
- *    de flou, se réactive tout seul si fast render est désactivé en jeu)
+ *  - bug corrigé : écran totalement noir (menus compris) puis freeze complet
+ *    quand le module est actif ET que "fast render" d'optifine est activé --
+ *    optifine dit lui même dans son lang file "fast render is not compatible
+ *    with shaders" et polyblur avertit pareil pour son mode phosphor
+ *    1ere tentative de fix utilisait IIIIllIlIIIllIIIIIIlIlIll.
+ *    lIIIIIIllllllIlIlllIIlllI() en pensant que c'était Config.isFastRender()
+ *    -- FAUX vérifié après coup (ça lit en fait IlllIllIIIlIIIlllIllIIlII.
+ *    llIIlllIlIIllIIIIIIIlIIlI un champ complètement différent lié aux
+ *    shaderpacks optifine pas à fast render) ce qui explique pourquoi le
+ *    freeze arrivait quand même le vrai champ ofFastRender est confirmé via
+ *    le parseur d'options qui compare littéralement contre la string
+ *    "ofFastRender" (regénérée depuis Strings23[365]) : c'est
+ *    mc.gameSettings.lIlllIlIIIllIllllIllllllI (boolean public direct sur la
+ *    classe gamesettings) le module est maintenant juste ignoré tant que ce
+ *    champ est vrai (pas de plantage juste pas de flou se réactive tout seul
+ *    si fast render est désactivé en jeu)
  *
  * liste "could not load" d'origine via cfr :
  *  (classes internes obfusquées du jeu, résolues par le classpath au build)
@@ -1319,7 +1328,7 @@ implements lIIIlIlIIlIllIlllIIlIllIl {
     }
 
     private void syncPolyBlurPhosphorState() {
-        boolean enabled = this.isPolyBlurModuleEnabled() && IIlllIIlIllIIIIllIlIIIlll.IIlIlIllllllIllllIIIIIllI && !IIIIllIlIIIllIIIIIIlIlIll.lIIIIIIllllllIlIlllIIlllI();
+        boolean enabled = this.isPolyBlurModuleEnabled() && IIlllIIlIllIIIIllIlIIIlll.IIlIlIllllllIllllIIIIIllI && !this.llIIIIIIlllIlIIlIlIIllIII.lIlIIllIlIlIIlIlllIIllIII.lIlllIlIIIllIllllIllllllI;
         if (!enabled) {
             if (this.polyBlurPhosphorShader != null) {
                 this.polyBlurPhosphorShader.lllIllIllIlIIIlllIIllllII();

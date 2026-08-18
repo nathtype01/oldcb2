@@ -1,10 +1,11 @@
 # oldcb2
 
+jouez pas sur lunar miskine
+
 ## c'est quoi
 
 quelques classes décompilées et patchées du client offline cheatbreaker 1.8.9 
-+ le vrai jar obfusqué original + les sources patchées des quelques classes qui avaient
-des bugs
++ le vrai jar obfusqué original + les sources patchées des quelques classes qui avaient des bugs
 
 le client de base marchait plus sur plusieurs trucs vu que c'est un vieux build
 de 2020 dont des endpoints externes sont morts depuis
@@ -33,13 +34,13 @@ explique le patch en détail)
 
 ## comment build
 
-lance `build.bat` depuis la racine du repo ça demande juste un jdk 8+ et 3 petites libs que le launcher officiel a déjà téléchargées
-si t'as déjà joué à une version 1.8.x avant (sinon lance n'importe laquelle
+lancez `build.bat` depuis la racine du repo ça demande juste un jdk 8+ et 3 petites libs que le launcher officiel a déjà téléchargées
+si vous avez déjà joué à une version 1.8.x avant (sinon lancez n'importe laquelle
 une fois pour les récupérer avant de relancer le script)
 
 ## comment jouer
 
 copie le jar patché et le json généré par `build.bat` dans
 `%appdata%\.minecraft\versions\oldcb2\` puis
-choisis cette version dans le launcher minecraft officiel et connecte toi
-avec ton compte microsoft normalement
+choisissez cette version dans le launcher minecraft officiel et connectez vous
+avec votre compte microsoft normalement
